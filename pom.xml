@@ -23,6 +23,18 @@
                     <target>1.8</target>
                 </configuration>
             </plugin>
+
+            <!--            adding flyway to maven-->
+            <plugin>
+                <groupId>org.flywaydb</groupId>
+                <artifactId>flyway-maven-plugin</artifactId>
+                <version>7.9.1</version>
+                <configuration>
+                    <url>jdbc:h2:./target/jdbc_koans_db</url>
+                    <user>sa</user>
+                    <passwoord></passwoord>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 

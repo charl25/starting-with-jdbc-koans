@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.fail;
 
 public class LearnJdbcTest {
 
-    final String KOANS_DATABASE_URL = "";
+    final String KOANS_DATABASE_URL = "jdbc:h2:./target/jdbc_koans_db";
 
     public Connection getConnection() throws Exception {
         // TODO - add a username of "sa" and a blank password ""
@@ -61,7 +61,7 @@ public class LearnJdbcTest {
             Class.forName("org.h2.Driver");
             // to fix this set the KOANS_DATABASE_URL to a valid value of `jdbc:h2:./target/jdbc_koans_db` - it will create an
             // embedded database in the target folder
-            Connection conn = DriverManager.getConnection(KOANS_DATABASE_URL, "", "");
+            Connection conn = DriverManager.getConnection(KOANS_DATABASE_URL, "sa", "");
         } catch (Exception e) {
             fail(e);
         }
