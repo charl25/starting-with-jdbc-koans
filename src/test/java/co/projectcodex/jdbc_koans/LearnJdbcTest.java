@@ -112,7 +112,7 @@ public class LearnJdbcTest {
 
             if (rs.next()) {
                 // mmm... how many rows was actually added in the V2__add_fruit.sql migration file
-                assertEquals(3, rs.getInt("fruit_count"));
+                assertEquals(4, rs.getInt("fruit_count"));
             }
 
             // todo - add a V2__add_fruit.sql file in the src/main/db/migration folder
@@ -149,12 +149,16 @@ public class LearnJdbcTest {
             // use it to add 2 new fruits an Orange costing 2.37 and a Guava costing 4.13
 
             // todo - add Orange
-            addFruitPreparedStatement.setString(1, "__");
-            addFruitPreparedStatement.setDouble(2, 0.00);
+            addFruitPreparedStatement.setString(1, "Orange");
+            addFruitPreparedStatement.setDouble(2, 2.37);
             addFruitPreparedStatement.execute();
 
             // todo - add a Guava below costing 4.13
             // todo - add the appropriate prepared statement below
+
+            addFruitPreparedStatement.setString(1,"Guava");
+            addFruitPreparedStatement.setDouble(2,4.13);
+            addFruitPreparedStatement.execute();
 
             ResultSet rs = conn.createStatement().executeQuery("select * from fruit where name in ('Guava', 'Orange')");
 
@@ -166,7 +170,7 @@ public class LearnJdbcTest {
                 }
                 else if ( counter == 2) {
                     // what is the correct price for a Guava
-                    assertEquals(0.00, rs.getDouble("price"));
+                    assertEquals(4.13, rs.getDouble("price"));
                 }
             }
             assertEquals(2, counter);
