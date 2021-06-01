@@ -194,13 +194,14 @@ public class LearnJdbcTest {
 
             // todo - why is this failing?
             // todo - tip what parameter needs to set on the PreparedStatement be added here?
+            findFruitPreparedStatement.setDouble(1,4.00);
 
             ResultSet rs = findFruitPreparedStatement.executeQuery();
             int counter = 0;
             while(rs.next()) {
                 counter++;
                 if (counter == 1) {
-                    assertEquals("rad apple", rs.getString("name"));
+                    assertEquals("red apple", rs.getString("name"));
                     assertEquals(4.75, rs.getDouble("price"));
                 }
                 else if ( counter == 2) {
